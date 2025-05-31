@@ -241,7 +241,7 @@ void Scanner::nextLex()
             scanName(true);
         }
         else {
-            errorPtr->lexError("ŒÊË‰‡ÂÚÒˇ ÒÚÓÍ‡ ËÎË Ë‰ÂÌÚËÙËÍ‡ÚÓ ÔÓÒÎÂ '@' / '$'");
+            errorPtr->lexError("–û–∂–∏–¥–∞–µ—Ç—Å—è —Å—Ç—Ä–æ–∫–∞ –∏–ª–∏ –∏–¥–µ–Ω—Ç–∏—Ñ–∏–∫–∞—Ç–æ—Ä –ø–æ—Å–ª–µ '@' / '$'");
         }
         }
 
@@ -365,7 +365,7 @@ void Scanner::nextLex()
     
     else
     {
-        errorPtr->lexError("ÕÂ‰ÓÔÛÒÚËÏ˚È ÒËÏ‚ÓÎ");
+        errorPtr->lexError("–ù–µ–¥–æ–ø—É—Å—Ç–∏–º—ã–π —Å–∏–º–≤–æ–ª");
     }
 }
 
@@ -392,11 +392,11 @@ void Scanner::scanName(bool isVerbatim)
 
 void Scanner::scanStrLit() {
     nameValue = "";
+
     while (Driver::ch != '"' && Driver::ch != Driver::chEOT) {
         if (Driver::ch == '\\') {
             int escChar = scanEscapeSequence();
             nameValue += static_cast<char>(escChar);
-            driver.nextCh();
         }
         else {
             nameValue += Driver::ch;
@@ -405,14 +405,14 @@ void Scanner::scanStrLit() {
     }
 
     if (Driver::ch == '"') {
-        driver.nextCh();
+        driver.nextCh(); 
+        lex = Lex::STRINGLITERAL;
     }
     else {
-        errorPtr->lexError("ŒÊË‰‡ÂÚÒˇ Á‡Í˚‚‡˛˘‡ˇ Í‡‚˚˜Í‡");
+        errorPtr->lexError("–û–∂–∏–¥–∞–µ—Ç—Å—è –∑–∞–∫—Ä—ã–≤–∞—é—â–∞—è –∫–∞–≤—ã—á–∫–∞");
     }
-
-    lex = Lex::STRINGLITERAL;
 }
+
 
 void Scanner::scanCharLiteral() {
     int value = 0;
@@ -422,7 +422,7 @@ void Scanner::scanCharLiteral() {
     }
     else {
         if (Driver::ch == '\'' || Driver::ch == '\n' || Driver::ch == '\r' || Driver::ch == Driver::chEOT) {
-            errorPtr->lexError("ÕÂ‰ÓÔÛÒÚËÏ˚È ÒËÏ‚ÓÎ ‚ ÒËÏ‚ÓÎ¸ÌÓÏ ÎËÚÂ‡ÎÂ");
+            errorPtr->lexError("–ù–µ–¥–æ–ø—É—Å—Ç–∏–º—ã–π —Å–∏–º–≤–æ–ª –≤ —Å–∏–º–≤–æ–ª—å–Ω–æ–º –ª–∏—Ç–µ—Ä–∞–ª–µ");
             return;
         }
         value = Driver::ch;
@@ -435,7 +435,7 @@ void Scanner::scanCharLiteral() {
         numValue = value;
     }
     else {
-        errorPtr->lexError("ŒÊË‰‡ÂÚÒˇ Á‡Í˚‚‡˛˘‡ˇ Í‡‚˚˜Í‡");
+        errorPtr->lexError("–û–∂–∏–¥–∞–µ—Ç—Å—è –∑–∞–∫—Ä—ã–≤–∞—é—â–∞—è –∫–∞–≤—ã—á–∫–∞");
     }
 }
 
@@ -475,7 +475,7 @@ void Scanner::scanIntrStrLit() {
                 driver.nextCh();
             }
             else {
-                errorPtr->lexError("ÕÂ˝Í‡ÌËÓ‚‡ÌÌ‡ˇ '}'");
+                errorPtr->lexError("–ù–µ—ç–∫—Ä–∞–Ω–∏—Ä–æ–≤–∞–Ω–Ω–∞—è '}'");
             }
         }
         else {
@@ -487,7 +487,7 @@ void Scanner::scanIntrStrLit() {
         driver.nextCh();
     }
     else {
-        errorPtr->lexError("ŒÊË‰‡ÂÚÒˇ Á‡Í˚‚‡˛˘‡ˇ Í‡‚˚˜Í‡");
+        errorPtr->lexError("–û–∂–∏–¥–∞–µ—Ç—Å—è –∑–∞–∫—Ä—ã–≤–∞—é—â–∞—è –∫–∞–≤—ã—á–∫–∞");
     }
 
     lex = Lex::INTERPOLATED_STRING;
@@ -514,7 +514,7 @@ void Scanner::scanNumber() {
                 numValue = std::stoi(binStr, nullptr, 2);
             }
             catch (...) {
-                errorPtr->lexError("ÕÂ‰ÓÔÛÒÚËÏ˚È ·ËÌ‡Ì˚È ÎËÚÂ‡Î: " + binStr);
+                errorPtr->lexError("–ù–µ–¥–æ–ø—É—Å—Ç–∏–º—ã–π –±–∏–Ω–∞—Ä–Ω—ã–π –ª–∏—Ç–µ—Ä–∞–ª: " + binStr);
                 numValue = 0;
             }
 
@@ -537,7 +537,7 @@ void Scanner::scanNumber() {
                 numValue = std::stoi(hexStr, nullptr, 16);
             }
             catch (...) {
-                errorPtr->lexError("ÕÂ‰ÓÔÛÒÚËÏ˚È ¯ÂÒÚÌ‡‰ˆ‡ÚÂË˜Ì˚È ÎËÚÂ‡Î: " + hexStr);
+                errorPtr->lexError("–ù–µ–¥–æ–ø—É—Å—Ç–∏–º—ã–π —à–µ—Å—Ç–Ω–∞–¥—Ü–∞—Ç–µ—Ä–∏—á–Ω—ã–π –ª–∏—Ç–µ—Ä–∞–ª: " + hexStr);
                 numValue = 0;
             }
 
@@ -590,7 +590,7 @@ void Scanner::scanNumber() {
         numValue = std::stod(numStr);
     }
     catch (...) {
-        errorPtr->lexError("ÕÂ‰ÓÔÛÒÚËÏ˚È ˜ËÒÎÓ‚ÓÈ ÎËÚÂ‡Î: " + numStr);
+        errorPtr->lexError("–ù–µ–¥–æ–ø—É—Å—Ç–∏–º—ã–π —á–∏—Å–ª–æ–≤–æ–π –ª–∏—Ç–µ—Ä–∞–ª: " + numStr);
         numValue = 0;
     }
 
@@ -659,7 +659,7 @@ void Scanner::skipComment()
 
         if (Driver::ch == Driver::chEOT)
         {
-            errorPtr->lexError("ÕÂÚ ÍÓÌˆ‡ ÍÓÏÏÂÌÚ‡Ëˇ");
+            errorPtr->lexError("–ù–µ—Ç –∫–æ–Ω—Ü–∞ –∫–æ–º–º–µ–Ω—Ç–∞—Ä–∏—è");
         }
         else
         {
@@ -678,7 +678,7 @@ void Scanner::skipComment()
 std::string Scanner::getStringNameOfLex(Lex lex)
 {
     auto it = lexToStr.find(lex);
-    std::string name = (it != lexToStr.end()) ? it->second : "ÎÂÍÒÂÏ‡ ÌÂ Ì‡È‰ÂÌ‡";
+    std::string name = (it != lexToStr.end()) ? it->second : "–ª–µ–∫—Å–µ–º–∞ –Ω–µ –Ω–∞–π–¥–µ–Ω–∞";
 
     return name;
 }
@@ -687,47 +687,35 @@ int Scanner::scanEscapeSequence() {
     driver.nextCh();
 
     switch (Driver::ch) {
-    case '\'':
-    case '"':
-    case '\\':
-    case '0':
-    case 'a':
-    case 'b':
-    case 'f':
-    case 'n':
-    case 'r':
-    case 't':
-    case 'v': {
-        int escChar = 0;
-        switch (Driver::ch) {
-        case '\'': escChar = '\''; break;
-        case '"':  escChar = '"';  break;
-        case '\\': escChar = '\\'; break;
-        case '0':  escChar = '\0'; break;
-        case 'a':  escChar = '\a'; break;
-        case 'b':  escChar = '\b'; break;
-        case 'f':  escChar = '\f'; break;
-        case 'n':  escChar = '\n'; break;
-        case 'r':  escChar = '\r'; break;
-        case 't':  escChar = '\t'; break;
-        case 'v':  escChar = '\v'; break;
-        }
-        driver.nextCh();
-        return escChar;
-    }
+    case '\'': driver.nextCh(); return '\'';
+    case '"':  driver.nextCh(); return '"';
+    case '\\': driver.nextCh(); return '\\';
+    case '0':  driver.nextCh(); return '\0';
+    case 'a':  driver.nextCh(); return '\a';
+    case 'b':  driver.nextCh(); return '\b';
+    case 'f':  driver.nextCh(); return '\f';
+    case 'n':  driver.nextCh(); return '\n';
+    case 'r':  driver.nextCh(); return '\r';
+    case 't':  driver.nextCh(); return '\t';
+    case 'v':  driver.nextCh(); return '\v';
+
     case 'u':
         driver.nextCh();
         return scanUnicodeEscape();
+
     case 'x':
         driver.nextCh();
         return scanHexEscape();
-    default:
-        errorPtr->lexError("ÕÂ‰ÓÔÛÒÚËÏ‡ˇ escape-ÔÓÒÎÂ‰Ó‚‡ÚÂÎ¸ÌÓÒÚ¸");
+
+    default: {
+        errorPtr->lexError("–ù–µ–¥–æ–ø—É—Å—Ç–∏–º–∞—è escape-–ø–æ—Å–ª–µ–¥–æ–≤–∞—Ç–µ–ª—å–Ω–æ—Å—Ç—å: \\" + std::string(1, Driver::ch));
         int invalid = Driver::ch;
         driver.nextCh();
         return invalid;
     }
+    }
 }
+
 
 int Scanner::scanUnicodeEscape() {
     int value = 0;
@@ -742,7 +730,7 @@ int Scanner::scanUnicodeEscape() {
             value = value * 16 + (Driver::ch - 'A' + 10);
         }
         else {
-            errorPtr->lexError("ŒÊË‰‡ÂÚÒˇ ¯ÂÒÚÌ‡‰ˆ‡ÚÂË˜Ì‡ˇ ˆËÙ‡");
+            errorPtr->lexError("–û–∂–∏–¥–∞–µ—Ç—Å—è —à–µ—Å—Ç–Ω–∞–¥—Ü–∞—Ç–µ—Ä–∏—á–Ω–∞—è —Ü–∏—Ñ—Ä–∞");
             break;
         }
         driver.nextCh();
