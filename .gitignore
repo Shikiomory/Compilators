@@ -1,0 +1,52 @@
+# --- Общие ---
+*.log
+*.tmp
+*.bak
+*.swp
+.DS_Store
+
+# --- Visual Studio ---
+.vs/
+*.vcxproj*
+*.sln
+*.user
+*.filters
+*.db
+*.opendb
+*.obj
+*.pdb
+*.idb
+*.ipch
+*.tlog
+*.lastbuildstate
+*.pch
+*.aps
+*.ncb
+
+# --- CMake ---
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+build/
+build-*/
+
+# --- Компиляция ---
+*.exe
+*.out
+*.a
+*.so
+*.dll
+*.lib
+
+# --- Docker ---
+*.tar
+*.img
+*.container
+
+# --- Кэш и временные файлы ---
+.cache/
+*.~*
+
+# --- VS Code (если используешь) ---
+.vscode/
