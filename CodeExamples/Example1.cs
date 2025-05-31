@@ -1,18 +1,18 @@
 using System;
 
 /* 
-   Многострочный комментарий
-   Класс Calculator с различными операциями
+   РјРЅРѕРіРѕСЃС‚СЂРѕС‡РЅС‹Р№ РєРѕРјРјРµРЅС‚Р°СЂРёР№
+   РљР»Р°СЃСЃ Calculator СЃ СЂР°Р·Р»РёС‡РЅС‹РјРё РѕРїРµСЂР°С†РёСЏРјРё
 */
 namespace CalculatorApp
 {
     public class Calculator
     {
-        // Метод для вычисления факториала
+        // РњРµС‚РѕРґ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ С„Р°РєС‚РѕСЂРёР°Р»Р°
         public static int CalculateFactorial(int n)
         {
             if (n < 0)
-                throw new ArgumentException("Число не может быть отрицательным");
+                throw new ArgumentException("Р§РёСЃР»Рѕ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рј");
 
             int result = 1;
             for (int i = 1; i <= n; i++)
@@ -31,12 +31,12 @@ namespace CalculatorApp
         {
             try
             {
-                Console.WriteLine("Введите число для вычисления факториала:");
+                Console.WriteLine("Р’РІРµРґРёС‚Рµ С‡РёСЃР»Рѕ РґР»СЏ РІС‹С‡РёСЃР»РµРЅРёСЏ С„Р°РєС‚РѕСЂРёР°Р»Р°:");
                 string input = Console.ReadLine() ?? "5";
                 int number = Convert.ToInt32(input);
 
                 int factorial = Calculator.CalculateFactorial(number);
-                Console.WriteLine($"Факториал числа {number} равен {factorial}");
+                Console.WriteLine($"Р¤Р°РєС‚РѕСЂРёР°Р» С‡РёСЃР»Р° {number} СЂР°РІРµРЅ {factorial}");
 
                 double[] numbers = { 2.5, 3.7, 4.0 };
                 double sum = 0.0;
@@ -46,12 +46,12 @@ namespace CalculatorApp
                     sum = Calculator.AddNumbers(sum, num);
                 }
 
-                Console.WriteLine(@$"Сумма элементов массива: 
+                Console.WriteLine(@$"РЎСѓРјРјР° СЌР»РµРјРµРЅС‚РѕРІ РјР°СЃСЃРёРІР°: 
 {sum.ToString("F2")}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Ошибка: {ex.Message}");
+                Console.WriteLine($"РћС€РёР±РєР°: {ex.Message}");
             }
         }
     }
